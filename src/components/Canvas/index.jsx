@@ -32,6 +32,8 @@ const CanvasView = props => {
     };
 
     const handleGettingResult = () => {
+        const calculatedVector = canvasInstance.calculate(true);
+        setVector(calculatedVector);
         trainer.setInputs(vector);
         const outputs = trainer.getOutputs();
         let index = 0;
@@ -40,15 +42,12 @@ const CanvasView = props => {
                 index = i;
         }
         console.log(outputs);
-        // console.log(trainer.getOutputs().map((output, key) => {
-        //     const letter = props.filledAlphabet
-        // }));
     };
 
     const handleSaving = () => {
         const calculatedVector = canvasInstance.calculate(true);
         setVector(calculatedVector);
-        // props.addNewLetter({letter, vector});
+        props.addNewLetter({letter, vector: calculatedVector});
     };
 
     const handleTraining = () => {
